@@ -2576,7 +2576,7 @@ def GradioSetup():
                                         "rmvpe",
                                         "rmvpe_gpu",
                                     ],
-                                value="rmvpe",
+                                value="rmvpe_gpu",
                                 interactive=True,
                             )
                             hop_length = gr.Slider(
@@ -2586,7 +2586,7 @@ def GradioSetup():
                                 label=i18n(
                                     "Hop Length (lower hop lengths take more time to infer but are more pitch accurate):"
                                 ),
-                                value=64,
+                                value=32,
                                 interactive=True,
                             )
 
@@ -2622,7 +2622,7 @@ def GradioSetup():
                                 maximum=10000,
                                 step=2,
                                 label=i18n("Training epochs:"),
-                                value=100,
+                                value=9999,
                                 interactive=True,
                             )
                             batch_size12 = gr.Slider(
@@ -2639,7 +2639,7 @@ def GradioSetup():
                                 maximum=100,
                                 step=1,
                                 label=i18n("Save frequency:"),
-                                value=10,
+                                value=0,
                                 interactive=True,
                                 visible=True,
                             )
@@ -2650,16 +2650,16 @@ def GradioSetup():
                                 label="Threshold % for collapse:",
                                 value=25,
                                 interactive=True,
-                                visible=False
+                                visible=True
                             )
                             smoothness23 = gr.Slider(
                                 minimum=0,
                                 maximum=0.99,
                                 step=0.005,
                                 label="Improvement smoothness calculation:",
-                                value=0.975,
+                                value=0.99,
                                 interactive=True,
-                                visible=False
+                                visible=True
                             )
 
                         with gr.Row():
@@ -2681,17 +2681,17 @@ def GradioSetup():
                                 label=i18n(
                                     "Save a small final model to the 'weights' folder at each save point"
                                 ),
-                                value=True,
+                                value=False,
                                 interactive=True,
                             )
                             if_retrain_collapse20 = gr.Checkbox(
                                 label="Reload from checkpoint before a mode collapse and try training it again",
-                                value=False,
+                                value=True,
                                 interactive=True,
                             )
                             if_stop_on_fit21 = gr.Checkbox(
                                 label="Stop training early if no improvement detected. (Set Training Epochs to something high like 9999)",
-                                value=False,
+                                value=True,
                                 interactive=True,
                             )
                         with gr.Column():
