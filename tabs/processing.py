@@ -4,7 +4,7 @@ sys.path.append("..")
 import os
 
 now_dir = os.getcwd()
-from lib.infer.infer_libs.train.process_ckpt import (
+from lib.modules.train.process_ckpt import (
     change_info,
     extract_small_model,
     merge,
@@ -34,7 +34,7 @@ def change_info_(ckpt_path):
         return {"__type__": "update"}, {"__type__": "update"}, {"__type__": "update"}
 
 
-def processing_():
+def processing():
 
         with gr.Accordion(
             label=i18n("Model fusion, can be used to test timbre fusion")
